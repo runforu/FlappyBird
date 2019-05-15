@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="FlappyBird.cpp" />
+    <ClCompile Include="Environment.cpp" />
+    <ClCompile Include="Loger.cpp" />
+    <ClCompile Include="FiniteStateMachine.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="UniqueIntGenerator.cpp" />
+    <ClCompile Include="ScoreState.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Environment.h" />
+    <ClInclude Include="Loger.h" />
+    <ClInclude Include="FiniteStateMachine.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="PlayState.h" />
+    <ClInclude Include="UniqueIntGenerator.h" />
+    <ClInclude Include="ScoreState.h" />
+    <ClInclude Include="GameOverState.h" />
+  </ItemGroup>
+</Project>
