@@ -196,9 +196,6 @@
     <ClCompile Include="UniqueIntGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Environment.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="FiniteStateMachine.h" />
@@ -210,16 +207,19 @@
     <ClInclude Include="State.h" />
     <ClInclude Include="UniqueIntGenerator.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\..\NuGet_packages\AllegroDeps.1.9.0.0\build\native\AllegroDeps.targets" Condition="Exists('..\..\..\NuGet_packages\AllegroDeps.1.9.0.0\build\native\AllegroDeps.targets')" />
-    <Import Project="..\..\..\NuGet_packages\Allegro.5.2.5.1\build\native\Allegro.targets" Condition="Exists('..\..\..\NuGet_packages\Allegro.5.2.5.1\build\native\Allegro.targets')" />
+    <Import Project="..\..\NuGet_packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets" Condition="Exists('..\..\NuGet_packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets')" />
+    <Import Project="..\..\NuGet_packages\Allegro.5.2.5.2\build\native\Allegro.targets" Condition="Exists('..\..\NuGet_packages\Allegro.5.2.5.2\build\native\Allegro.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\NuGet_packages\AllegroDeps.1.9.0.0\build\native\AllegroDeps.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\NuGet_packages\AllegroDeps.1.9.0.0\build\native\AllegroDeps.targets'))" />
-    <Error Condition="!Exists('..\..\..\NuGet_packages\Allegro.5.2.5.1\build\native\Allegro.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\NuGet_packages\Allegro.5.2.5.1\build\native\Allegro.targets'))" />
+    <Error Condition="!Exists('..\..\NuGet_packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\NuGet_packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets'))" />
+    <Error Condition="!Exists('..\..\NuGet_packages\Allegro.5.2.5.2\build\native\Allegro.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\NuGet_packages\Allegro.5.2.5.2\build\native\Allegro.targets'))" />
   </Target>
 </Project>

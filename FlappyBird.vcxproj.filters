@@ -13,9 +13,6 @@
     <ClCompile Include="GameOverState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Environment.h" />
     <ClInclude Include="Loger.h" />
     <ClInclude Include="FiniteStateMachine.h" />
@@ -26,5 +23,8 @@
     <ClInclude Include="UniqueIntGenerator.h" />
     <ClInclude Include="ScoreState.h" />
     <ClInclude Include="GameOverState.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
