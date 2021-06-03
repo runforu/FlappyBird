@@ -89,7 +89,7 @@ void GameOverState::Run() {
 
     for (int i = 0; i < count; ++i) {
         char buf[128] = {0};
-        sprintf_s(buf, "No.%-4d %-8s   %-8s%c", i + start_num + 1, array[i].m_name.c_str(), array[i].m_score.c_str(),
+        snprintf(buf, std::size(buf), "No.%-4d %-8s   %-8s%c", i + start_num + 1, array[i].m_name.c_str(), array[i].m_score.c_str(),
                   rank == i ? '<' : ' ');
         al_draw_text(normal_font, rank == i ? al_map_rgb(128, 55, 196) : al_map_rgb(55, 128, 55), center_x,
                      center_y + (i - 5) * normal_font_height, ALLEGRO_ALIGN_CENTER, buf);
@@ -169,7 +169,7 @@ void GameOverState::Run() {
 
             for (int i = 0; i < count; ++i) {
                 char buf[128] = {0};
-                sprintf_s(buf, "No.%-4d %-8s   %-8s%c", i + start_num + 1, array[i].m_name.c_str(), array[i].m_score.c_str(),
+                snprintf(buf, std::size(buf), "No.%-4d %-8s   %-8s%c", i + start_num + 1, array[i].m_name.c_str(), array[i].m_score.c_str(),
                           rank == i ? '<' : ' ');
                 al_draw_text(normal_font, rank == i ? al_map_rgb(128, 55, 196) : al_map_rgb(55, 128, 55), center_x,
                              center_y + (i - 5) * normal_font_height, ALLEGRO_ALIGN_CENTER, buf);

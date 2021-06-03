@@ -76,7 +76,7 @@ void PlayState::Run() {
             // check collision
             if (CheckCollision() || MissionCompleted()) {
                 char buf[16];
-                sprintf_s(buf, "%d", m_score);
+                snprintf(buf, std::size(buf),  "%d", m_score);
                 ScoreRecord record = {"", buf};
                 env.NewScore(record);
                 DeadEvent::Instance().Trigger();
@@ -129,7 +129,7 @@ void PlayState::Run() {
             m_bird->Draw();
 
             char buf[16];
-            sprintf_s(buf, "%d", m_score);
+            snprintf(buf, std::size(buf), "%d", m_score);
             al_draw_text(env.GetNormalFont(), al_map_rgb(55, 55, 55), env.GetScreenW() - 100, 10, ALLEGRO_ALIGN_CENTRE, buf);
 
             al_flip_display();

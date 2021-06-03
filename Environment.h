@@ -10,7 +10,6 @@
 #include <string>
 #include <vector>
 #include "Loger.h"
-#include "io.h"
 
 class Drawable;
 class Interpolator {

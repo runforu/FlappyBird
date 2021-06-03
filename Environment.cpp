@@ -1,4 +1,5 @@
 #include "Environment.h"
+#include <filesystem>
 
 const float Environment::kFps = 60;
 const char* Environment::kConfigFile = "config.ini";
@@ -17,26 +18,43 @@ Drawable::~Drawable() {
     m_interpolators.clear();
 }
 
-Spirit::Spirit(std::string wildcard_file_path, float x, float y) : Drawable(x, y), m_index(0), m_spead(1), m_count(0) {
-    _finddata_t file_info;
-    int handle = _findfirst(wildcard_file_path.c_str(), &file_info);
-    if (-1 == handle) {
-        return;
-    }
-    std::size_t pos = wildcard_file_path.rfind('/');
-    if (pos != std::string::npos) {
-        wildcard_file_path.resize(pos);
-    }
-    do {
-        if (file_info.attrib != _A_SUBDIR) {
-            std::string file_name = wildcard_file_path + "/" + file_info.name;
-            ALLEGRO_BITMAP* bitmap = Environment::Instance().LoadBitmap(file_name.c_str());
-            if (bitmap != nullptr) {
-                m_bitmaps.push_back(bitmap);
-            }
+Spirit::Spirit(std::string wildcard_file_path, float x, float y)
+    : Drawable(x, y), m_index(0), m_spead(1), m_count(0)
+{
+    // Wildcard question mark is not supported.
+    assert(wildcard_file_path.find('?') == std::string::npos);
+	namespace fs = std::filesystem;
+    const auto wildcard_path = fs::path{wildcard_file_path};
+
+    const auto directory_path = wildcard_path.parent_path();
+    // No wildcard asterisk in directory path.
+    assert(directory_path.u8string().find('*') == std::string::npos);
+
+    const auto filename = wildcard_path.filename().u8string();
+	const auto wildcard_index = filename.find('*');
+    // Only 0 or 1 asterisk in filename.
+    assert(wildcard_index == filename.rfind('*'));
+
+	const auto file_prefix = filename.substr(0, wildcard_index);
+	const auto file_suffix = wildcard_index + 1 > wildcard_file_path.size()
+		? ""
+		: filename.substr(wildcard_index + 1);
+
+    for (const auto& entry : fs::directory_iterator(directory_path)) {
+        if (!entry.is_regular_file()) { continue; }
+        const auto entry_path = entry.path();
+        const auto entry_filename = entry_path.filename().u8string();
+        if (entry_filename.find(file_prefix) != 0) { continue; }
+        if (entry_filename.rfind(file_suffix)
+            != entry_filename.size() - file_suffix.size())
+        { continue; }
+
+        if (auto bitmap = Environment::Instance().LoadBitmap(
+            entry_path.u8string().c_str()))
+        {
+            m_bitmaps.push_back(bitmap);
         }
-    } while (!_findnext(handle, &file_info));
-    _findclose(handle);
+    }
 }
 
 Spirit::~Spirit() {

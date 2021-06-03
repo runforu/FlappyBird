@@ -23,32 +23,32 @@
     <ProjectGuid>{CF7A6491-A7E7-4E21-8F49-77F80492AB25}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>FlappyBird</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -135,6 +135,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AssemblerOutput>NoListing</AssemblerOutput>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -175,6 +176,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AssemblerOutput>NoListing</AssemblerOutput>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -212,14 +214,12 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\NuGet_packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets" Condition="Exists('..\..\NuGet_packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets')" />
-    <Import Project="..\..\NuGet_packages\Allegro.5.2.5.2\build\native\Allegro.targets" Condition="Exists('..\..\NuGet_packages\Allegro.5.2.5.2\build\native\Allegro.targets')" />
+    <Import Project="packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets" />
+    <Import Project="packages\Allegro.5.2.5.2\build\native\Allegro.targets" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\NuGet_packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\NuGet_packages\AllegroDeps.1.10.0.0\build\native\AllegroDeps.targets'))" />
-    <Error Condition="!Exists('..\..\NuGet_packages\Allegro.5.2.5.2\build\native\Allegro.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\NuGet_packages\Allegro.5.2.5.2\build\native\Allegro.targets'))" />
   </Target>
 </Project>
