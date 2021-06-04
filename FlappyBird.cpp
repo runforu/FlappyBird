@@ -8,6 +8,8 @@
 
 int main(int argc, char **argv) {
     { FSM::FiniteStateMachine::Instance().Start(); }
+#ifdef _WIN32
     _CrtDumpMemoryLeaks();
+#endif
     return 0;
 }

@@ -1,8 +1,6 @@
 #include <functional>
 #include <iostream>
-#include <process.h>
 #include <time.h>
-#include <windows.h>
 #include "Event.h"
 #include "FiniteStateMachine.h"
 #include "GameOverState.h"

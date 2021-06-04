@@ -58,7 +58,7 @@ void ScoreState::Run() {
 
     for (int i = start_num; i < scores.m_count && i < start_num + kMaxScoreRecord; ++i) {
         char buf[128] = {0};
-        sprintf_s(buf, "No.%-4d %-8s %-8s%C", i + 1, scores.m_scores[i].m_name.c_str(), scores.m_scores[i].m_score.c_str(),
+        snprintf(buf, std::size(buf), "No.%-4d %-8s %-8s%C", i + 1, scores.m_scores[i].m_name.c_str(), scores.m_scores[i].m_score.c_str(),
                   highlight == i ? '<' : ' ');
         al_draw_text(normal_font, highlight == i ? al_map_rgb(128, 55, 196) : al_map_rgb(55, 128, 55), center_x,
                      center_y + (i - start_num - kMaxScoreRecord / 2) * normal_font_height * 1.2, ALLEGRO_ALIGN_CENTER, buf);
@@ -130,7 +130,7 @@ void ScoreState::Run() {
 
             for (int i = start_num; i < scores.m_count && i < start_num + kMaxScoreRecord; ++i) {
                 char buf[128] = {0};
-                sprintf_s(buf, "No.%-4d %-8s %-8s%C", i + 1, scores.m_scores[i].m_name.c_str(),
+                snprintf(buf, std::size(buf), "No.%-4d %-8s %-8s%C", i + 1, scores.m_scores[i].m_name.c_str(),
                           scores.m_scores[i].m_score.c_str(), highlight == i ? '<' : ' ');
                 al_draw_text(normal_font, highlight == i ? al_map_rgb(128, 55, 196) : al_map_rgb(55, 128, 55), center_x,
                              center_y + (i - start_num - kMaxScoreRecord / 2) * normal_font_height * 1.2, ALLEGRO_ALIGN_CENTER,
